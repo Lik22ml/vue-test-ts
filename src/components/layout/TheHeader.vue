@@ -4,15 +4,17 @@
   </header>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "TheHeader",
   props: {
     message: {
       type: String,
       required: true,
       default: "Hello",
-      validator: function (value) {
+      validator: function (value: string): boolean {
         return value !== "";
       },
     },
@@ -21,5 +23,5 @@ export default {
     // Log component name
     console.log(this.message + this.$options.name);
   },
-};
+});
 </script>

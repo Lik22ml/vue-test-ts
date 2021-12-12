@@ -14,8 +14,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PostList from "@/components/PostList.vue";
-import Api from "@/services/api.js";
+import PostList from "../components/PostList.vue";
+import Api from "../services/api.js";
 
 interface Post {
   id: number;
@@ -48,7 +48,7 @@ export default defineComponent({
   computed: {
     searchedPosts(): Post[] {
       if (this.searchText) {
-        return this.posts.filter((post) => {
+        return this.posts.filter((post: Post) => {
           return post.title
             .toLowerCase()
             .includes(this.searchText.toLowerCase());
@@ -58,7 +58,7 @@ export default defineComponent({
       }
     },
   },
-  created(): void {
+  created() {
     // ON CREATED GET POSTS IF EMPTY
     this.fetchPosts();
 
@@ -69,10 +69,10 @@ export default defineComponent({
     // FETCH ALL POSTS FROM API
     async fetchPosts(): Promise<void> {
       Api.getPosts()
-        .then((result) => {
+        .then((result: Post[]) => {
           this.posts = result;
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           console.log(error);
         });
     },

@@ -9,7 +9,9 @@ interface Post {
   title: string;
   body: string;
 }
-
+declare global {
+  const postId: number;
+}
 export default defineComponent({
   name: "SinglePost",
   props: {
@@ -25,7 +27,7 @@ export default defineComponent({
   data() {
     return {
       post: {} as Post,
-      postId: this.$route.params.id as number,
+      postId: +this.$route.params.id as number,
     };
   },
   computed: {
@@ -57,13 +59,21 @@ export default defineComponent({
         .then((result) => {
           this.post = result;
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           console.log(error);
         });
     },
   },
   // RENDER tempalte
-  render({ postId, title, text }) {
+  render({
+    postId,
+    title,
+    text,
+  }: {
+    postId: number;
+    title: string;
+    text: string;
+  }): unknown {
     return h("section", { class: "s-singlePost" }, [
       h("h1", {}, "Post: " + postId),
       h("div", { class: "c-post" }, [h("h4", title), h("p", text)]),
