@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Posts from "../views/Posts.vue";
 
 // 404
 import NotFound from "../views/NotFound.vue";
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: "/posts",
     name: "Posts",
