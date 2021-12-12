@@ -1,10 +1,28 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <TheHeader :message="propMessage" />
+  <article class="main">
+    <router-view :message="propMessage" />
+  </article>
+  <TheFooter :message="propMessage" />
 </template>
+
+<script lang="ts">
+import TheHeader from "./components/layout/TheHeader.vue";
+import TheFooter from "./components/layout/TheFooter.vue";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  components: {
+    TheHeader,
+    TheFooter,
+  },
+  data() {
+    return {
+      propMessage: "Hello from " as string,
+    };
+  },
+});
+</script>
 
 <style lang="scss">
 #app {
@@ -15,16 +33,31 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.main {
+  margin: 50px 0;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+header {
+  height: 50px;
+  width: 100%;
+  background-color: #2c3e50;
+  padding: 10px 0;
+}
+
+footer {
+  height: 20px;
+  width: 100%;
+
+  p {
+    background-color: #d7cfcf;
+    text-align: center;
+    margin: 0;
+    padding: 0;
   }
 }
 </style>
