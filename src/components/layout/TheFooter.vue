@@ -1,6 +1,8 @@
 <template>
   <footer>
-    <p>Footer Copy Mladen</p>
+    <div class="footer-wrapper">
+      <p>Footer Copy Mladen</p>
+    </div>
   </footer>
 </template>
 
@@ -25,3 +27,13 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.footer-wrapper {
+  background-color: blue;
+  color: white;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+}
+</style>

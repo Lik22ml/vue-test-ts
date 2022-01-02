@@ -15,14 +15,8 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import PostList from "../components/PostList.vue";
-import Api from "../services/api.js";
-
-interface Post {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-}
+import { getPosts } from "../services/api";
+import { Post } from "../interfaces/post";
 
 export default defineComponent({
   name: "Posts",
@@ -68,7 +62,7 @@ export default defineComponent({
   methods: {
     // FETCH ALL POSTS FROM API
     async fetchPosts(): Promise<void> {
-      Api.getPosts()
+      getPosts()
         .then((result: Post[]) => {
           this.posts = result;
         })

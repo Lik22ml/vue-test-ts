@@ -31,15 +31,28 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
+html,
 body {
-  max-width: 1920px;
-  margin: 0 auto;
+  height: 100%;
 }
 
 .main {
+  height: 100%;
+  width: 100%;
   margin: 50px 0;
+  flex-grow: 1;
+}
+
+header,
+main,
+footer {
+  flex-shrink: 0;
 }
 
 header {

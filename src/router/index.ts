@@ -6,6 +6,10 @@ import NotFound from "../views/NotFound.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: "/",
+    redirect: "/posts",
+  },
+  {
     path: "/posts",
     name: "Posts",
     component: Posts,
@@ -18,7 +22,9 @@ const routes: Array<RouteRecordRaw> = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "../views/SinglePost.vue"),
+    component: () =>
+      // eslint-disable-line no-use-before-define
+      import(/* webpackChunkName: "about" */ "../views/SinglePost.vue"),
   },
   { path: "/:notFound(.*)", component: NotFound, name: "NotFound" },
 ];
