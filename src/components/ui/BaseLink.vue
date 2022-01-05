@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { logComponentName } from "../../helper/message.js";
 
 export default defineComponent({
   name: "BaseLink",
@@ -33,7 +34,7 @@ export default defineComponent({
   },
   created(): void {
     // Log component name
-    console.log(this.message + this.$options.name);
+    logComponentName(this.message, this.$options.name);
   },
 });
 </script>

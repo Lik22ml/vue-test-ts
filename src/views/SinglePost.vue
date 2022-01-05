@@ -25,6 +25,7 @@ import { User } from "../interfaces/user";
 import { Comment } from "../interfaces/comment";
 import { defineComponent } from "vue";
 import { getComments, getPost, getUsers } from "../services/api.js";
+import { logComponentName } from "../helper/message.js";
 
 declare global {
   const postId: number;
@@ -73,7 +74,7 @@ export default defineComponent({
       this.fetchPost();
     }
     // Log component name
-    console.log(this.message + this.$options.name);
+    logComponentName(this.message, this.$options.name);
   },
   methods: {
     // FETCH POST - USING ROUTE ID

@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { logComponentName } from "../../helper/message.js";
 
 export default defineComponent({
   name: "TheHeader",
@@ -21,7 +22,7 @@ export default defineComponent({
   },
   created() {
     // Log component name
-    console.log(this.message + this.$options.name);
+    logComponentName(this.message, this.$options.name);
   },
 });
 </script>

@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { logComponentName } from "../helper/message.js";
 
 export default defineComponent({
   name: "NotFound" as string,
@@ -23,7 +24,7 @@ export default defineComponent({
   },
   created(): void {
     // LOg component name
-    console.log(this.message + this.$options.name);
+    logComponentName(this.message, this.$options.name);
   },
 });
 </script>

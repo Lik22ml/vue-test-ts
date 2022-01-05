@@ -1,12 +1,7 @@
 <template>
   <section class="s-posts">
     <div class="c-search">
-      <input
-        v-model="searchText"
-        class="c-search__input"
-        type="text"
-        placeholder="Search..."
-      />
+      <input v-model="searchText" class="c-search__input" type="text" placeholder="Search..." />
     </div>
     <PostList :posts="searchedPosts" :message="message" />
   </section>
@@ -17,6 +12,7 @@ import { defineComponent } from "vue";
 import PostList from "../components/PostList.vue";
 import { getPosts } from "../services/api";
 import { Post } from "../interfaces/post";
+import { logComponentName } from "../helper/message.js";
 
 export default defineComponent({
   name: "Posts",
@@ -57,7 +53,7 @@ export default defineComponent({
     this.fetchPosts();
 
     // Log component name
-    console.log(this.message + this.$options.name);
+    logComponentName(this.message, this.$options.name);
   },
   methods: {
     // FETCH ALL POSTS FROM API
