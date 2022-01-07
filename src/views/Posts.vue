@@ -1,7 +1,8 @@
 <template>
   <section class="s-posts">
     <div class="c-search">
-      <input v-model="searchText" class="c-search__input" type="text" placeholder="Search..." />
+      <label for="search">Search:</label>
+      <input v-model="searchText" id="search" name="search" class="c-search__input" type="text" placeholder="Search..." />
     </div>
     <PostList :posts="searchedPosts" :message="message" />
   </section>
